@@ -1,0 +1,12 @@
+C:\_git\mdigit\netcore\src\netcore\bin\Debug\netcoreapp2.0\netcore.deps.json
+C:\_git\mdigit\netcore\src\netcore\bin\Debug\netcoreapp2.0\netcore.runtimeconfig.json
+C:\_git\mdigit\netcore\src\netcore\bin\Debug\netcoreapp2.0\netcore.runtimeconfig.dev.json
+C:\_git\mdigit\netcore\src\netcore\bin\Debug\netcoreapp2.0\netcore.dll
+C:\_git\mdigit\netcore\src\netcore\bin\Debug\netcoreapp2.0\netcore.pdb
+C:\_git\mdigit\netcore\src\netcore\obj\Debug\netcoreapp2.0\netcore.csprojAssemblyReference.cache
+C:\_git\mdigit\netcore\src\netcore\obj\Debug\netcoreapp2.0\netcore.csproj.CoreCompileInputs.cache
+C:\_git\mdigit\netcore\src\netcore\obj\Debug\netcoreapp2.0\netcore.AssemblyInfoInputs.cache
+C:\_git\mdigit\netcore\src\netcore\obj\Debug\netcoreapp2.0\netcore.AssemblyInfo.cs
+C:\_git\mdigit\netcore\src\netcore\obj\Debug\netcoreapp2.0\netcore.dll
+C:\_git\mdigit\netcore\src\netcore\obj\Debug\netcoreapp2.0\netcore.pdb
+C:\_git\mdigit\netcore\src\netcore\bin\Debug\netcoreapp2.0\autofac.json

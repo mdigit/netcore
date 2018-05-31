@@ -1,0 +1,15 @@
+﻿{
+  "defaultAssembly": "netcore",
+  "components": [
+  ],
+  "modules": [
+    {
+      "type": "mdigit.netcore.DefaultModule, netcore",
+      "properties": {
+        "LogRequestsModuleEnabled": "False",
+        "ApplicationAssemblyName": "netcore"
+      },
+      "injectProperties": true
+    }
+  ]
+}
