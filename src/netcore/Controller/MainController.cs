@@ -3,6 +3,7 @@
 using System;
 using System.Diagnostics;
 using System.Text;
+using mdigit.netcore.Definition.Enums;
 
 #endregion
 
@@ -19,6 +20,28 @@ namespace mdigit.netcore
         ///     Gets or sets the <see cref="IOptionsService" />
         /// </summary>
         public IOptionsService OptionsService
+        {
+            [DebuggerStepThrough]
+            get;
+            [DebuggerStepThrough]
+            set;
+        }
+
+        /// <summary>
+        ///     Gets or sets the <see cref="ISenderService" />
+        /// </summary>
+        public ISenderService SenderService
+        {
+            [DebuggerStepThrough]
+            get;
+            [DebuggerStepThrough]
+            set;
+        }
+
+        /// <summary>
+        ///     Gets or sets the <see cref="IReceiverService" />
+        /// </summary>
+        public IReceiverService ReceiverService
         {
             [DebuggerStepThrough]
             get;
@@ -62,13 +85,19 @@ namespace mdigit.netcore
         public void Run()
         {
             var option = String.Empty;
+            ShowOptions();
             while ( option != null )
             {
-                ShowOptions();
                 option = ReadLineWithCancel();
 
-                if ( VerifyOption( option ) )
-                    Console.WriteLine( $"{Environment.NewLine}{GetFunction( option )}" );
+                if ( !OptionsService.ValidateOption( option ) )
+                {
+                    Console.WriteLine($"{Environment.NewLine}Invalid option. Try again.");
+                    continue;
+                }
+
+                Console.WriteLine( $"{Environment.NewLine}{GetFunction( option )}" );
+                ExecuteFunction( option.OptionToFunction() );
             }
         }
 
@@ -78,16 +107,10 @@ namespace mdigit.netcore
         private void ShowOptions()
         {
             Console.Clear();
+            foreach ( var option in OptionsService.GetValidOptions() )
+                Console.WriteLine( $"- {option.Key}\t{option.FunctionName}" );
             Console.WriteLine( "- <Esc>\tExit" );
-            Console.WriteLine( "- t\tTest" );
         }
-
-        /// <summary>
-        ///     Verfies the given option.
-        /// </summary>
-        /// <param name="option"></param>
-        /// <returns></returns>
-        private Boolean VerifyOption( String option ) => option == "t";
 
         /// <summary>
         ///     Gets the corresponding function name from the given option.
@@ -95,6 +118,29 @@ namespace mdigit.netcore
         /// <param name="option">The option.</param>
         /// <returns>Returns a function name.</returns>
         private String GetFunction( String option ) => option == "t" ? "Test" : String.Empty;
+
+        /// <summary>
+        ///     Executes the given function.
+        /// </summary>
+        /// <param name="function">The function.</param>
+        private void ExecuteFunction( Function function )
+        {
+            switch ( function )
+            {
+                case Function.SendMessage:
+                    SenderService.Send();
+                    break;
+                case Function.StartListening:
+                    ReceiverService.StartListening();
+                    break;
+                case Function.StoptListening:
+                    ReceiverService.StopListening();
+                    break;
+                default:
+                    Console.WriteLine( $"Function {function} not implemented yet." );
+                    break;
+            }
+        }
 
         #endregion
     }

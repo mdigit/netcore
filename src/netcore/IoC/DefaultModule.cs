@@ -34,6 +34,18 @@ namespace mdigit.netcore
                    .As<IOptionsService>()
                    .InstancePerLifetimeScope()
                    .PropertiesAutowired();
+            builder.RegisterType<ParameterService>()
+                   .As<IParameterService>()
+                   .InstancePerLifetimeScope()
+                   .PropertiesAutowired();
+            builder.RegisterType<RabbitMqSenderService>()
+                   .As<ISenderService>()
+                   .InstancePerLifetimeScope()
+                   .PropertiesAutowired();
+            builder.RegisterType<RabbitMqReceiverService>()
+                   .As<IReceiverService>()
+                   .InstancePerLifetimeScope()
+                   .PropertiesAutowired();
         }
     }
 }
